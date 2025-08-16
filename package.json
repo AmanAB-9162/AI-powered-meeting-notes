@@ -1,0 +1,19 @@
+{
+  "name": "ai-meeting-summarizer",
+  "version": "1.0.0",
+  "description": "AI-powered meeting notes summarizer and sharer",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build"
+  },
+  "keywords": ["ai", "summarizer", "meeting-notes", "mern"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 

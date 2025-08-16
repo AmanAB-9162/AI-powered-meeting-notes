@@ -1,0 +1,52 @@
+/* Additional styles for the App component */
+.App {
+  text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .form-section,
+  .summary-section,
+  .share-section {
+    padding: 15px;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+/* Loading animation */
+.loading p {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* File upload hover effect */
+.file-upload:hover p {
+  color: #007bff;
+}
+
+/* Button group spacing */
+.btn + .btn {
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .btn + .btn {
+    margin-left: 0;
+  }
+} 
