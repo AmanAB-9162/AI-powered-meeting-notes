@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
+// Get API base URL from environment or use localhost for development
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 function App() {
   const [transcript, setTranscript] = useState('');
   const [customPrompt, setCustomPrompt] = useState('');
@@ -31,7 +34,7 @@ function App() {
 
   const handleGenerateSummary = async () => {
     if (!transcript.trim()) {
-      setError('Please provide a transcript first.');
+      setError('Please enter or upload a transcript');
       return;
     }
 
@@ -40,7 +43,7 @@ function App() {
     setSuccess('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/summarize', {
+      const response = await axios.post(`${API_BASE_URL}/api/summarize`, {
         transcript: transcript,
         customPrompt: customPrompt
       });
@@ -60,7 +63,7 @@ function App() {
 
   const handleShare = async () => {
     if (!editableSummary.trim() || recipientTags.length === 0) {
-      setError('Please provide a summary and at least one recipient.');
+      setError('Please enter a summary and at least one recipient');
       return;
     }
 
@@ -69,7 +72,7 @@ function App() {
     setSuccess('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/share', {
+      const response = await axios.post(`${API_BASE_URL}/api/share`, {
         summary: editableSummary,
         recipients: recipientTags,
         subject: shareSubject || 'Meeting Summary Shared',
